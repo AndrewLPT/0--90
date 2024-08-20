@@ -1,0 +1,40 @@
+<!-- templates/frontend/dashboard.html -->
+
+{% extends 'frontend/base.html' %}
+
+{% block title %}Dashboard - My Nutri Project{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2>您的健康狀況概覽</h2>
+    <div class="card">
+        <h3>營養攝入</h3>
+        <canvas id="nutritionChart"></canvas>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    const ctx = document.getElementById('nutritionChart').getContext('2d');
+    const chart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['卡路里', '蛋白質', '碳水化合物', '脂肪'],
+            datasets: [{
+                label: '攝入量',
+                data: [2000, 75, 250, 70],  // 這裡你可以動態輸入數據
+                backgroundColor: ['#FF8C00', '#FFA500', '#FFD700', '#FF7F50'],
+                borderColor: ['#FF4500', '#FF6347', '#FF4500', '#FF6347'],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+</script>
+{% endblock %}

@@ -1,0 +1,84 @@
+/* static/css/style.css */
+
+/* 基本樣式設置 */
+body {
+    font-family: 'Open Sans', sans-serif;
+    background-color: #FFFAF0; /* 溫暖的奶油色背景 */
+    color: #333; /* 深灰色文字 */
+    margin: 0;
+    padding: 0;
+}
+
+/* 標題和段落 */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Raleway', sans-serif;
+    color: #FF8C00; /* 橙色標題 */
+}
+
+p {
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+/* 導航欄 */
+nav {
+    background-color: #FFA500; /* 橙色背景 */
+    padding: 10px;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+nav ul li {
+    margin-right: 20px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
+/* 按鈕樣式 */
+button, .btn {
+    background-color: #FF8C00;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+button:hover, .btn:hover {
+    background-color: #FF7F50; /* 漸變為珊瑚色 */
+}
+
+/* 卡片設計 */
+.card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: 20px 0;
+}
+
+/* 留白 */
+.container {
+    padding: 20px;
+}
+
+/* 圖表樣式 (如使用 Chart.js) */
+canvas {
+    background-color: #fff3e0; /* 淡橙色背景 */
+    border-radius: 10px;
+    padding: 20px;
+}

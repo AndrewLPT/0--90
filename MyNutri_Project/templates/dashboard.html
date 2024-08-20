@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <h1>Welcome to Your Dashboard, {{ user.username }}</h1>
+    
+    <div>
+        <h2>營養建議</h2>
+        <p>{{ suggestion }}</p>
+    </div>
+    
+    <div>
+        <h2>營養攝入圖表</h2>
+        <canvas id="nutritionChart"></canvas>
+    </div>
+
+    <script>
+        const ctx = document.getElementById('nutritionChart').getContext('2d');
+        const chart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['卡路里', '蛋白質', '碳水化合物', '脂肪'],
+                datasets: [{
+                    label: '攝入量',
+                    data: [{{ total_calories }}, {{ total_protein }}, {{ total_carbs }}, {{ total_fat }}],
+                    backgroundColor: ['rgba(255, 99, 132, 0.2)', 'rgba(54, 162, 235, 0.2)', 'rgba(255, 206, 86, 0.2)', 'rgba(75, 192, 192, 0.2)'],
+                    borderColor: ['rgba(255, 99, 132, 1)', 'rgba(54, 162, 235, 1)', 'rgba(255, 206, 86, 1)', 'rgba(75, 192, 192, 1)'],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
+
+
+<!-- templates/frontend/dashboard.html -->
+
+{% extends 'frontend/base.html' %}
+
+{% block title %}Dashboard - My Nutri Project{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2>您的健康狀況概覽</h2>
+    <div class="card">
+        <h3>營養攝入</h3>
+        <canvas id="nutritionChart"></canvas>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    const ctx = document.getElementById('nutritionChart').getContext('2d');
+    const chart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['卡路里', '蛋白質', '碳水化合物', '脂肪'],
+            datasets: [{
+                label: '攝入量',
+                data: [2000, 75, 250, 70],  // 這裡你可以動態輸入數據
+                backgroundColor: ['#FF8C00', '#FFA500', '#FFD700', '#FF7F50'],
+                borderColor: ['#FF4500', '#FF6347', '#FF4500', '#FF6347'],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+</script>
+{% endblock %}
+
